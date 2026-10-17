@@ -1,0 +1,4 @@
+[2026-09-23 07:14:53] local.ERROR: Maximum execution time of 300 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 300 seconds exceeded at D:/xampp/htdocs/Datesheet_Generator/Datesheet_Generator/vendor/laravel/framework/src/Illuminate/Foundation/Console/ServeCommand.php:95)
+[stacktrace]
+#0 {main}
+"} 
