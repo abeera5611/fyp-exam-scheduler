@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    image: fyp-laravel:local
+    ports:
+      - "8000:80"
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db            # service name below, replaces XAMPP's 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: fyp
+      DB_USERNAME: root
+      DB_PASSWORD: secret
+    volumes:
+      # Bind mount (relative path): host project folder -> container.
+      # Edit code on your machine, refresh the browser, no rebuild needed.
+      - ./:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: fyp
+    volumes:
+      - db_data:/var/lib/mysql
+      # Bind mount: any .sql file here is imported on first start
+      # (put your phpMyAdmin export in docker/db-init/)
+      - ./docker/db-init:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  db_data:
